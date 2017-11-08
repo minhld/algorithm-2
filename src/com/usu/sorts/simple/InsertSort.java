@@ -2,32 +2,29 @@ package com.usu.sorts.simple;
 
 public class InsertSort {
 	public static long[] sort(long[] a) {
-		long min;
+		long mark;
 		int swPos = -1;
 		long cCount = 0;
 		long sCount = 0;
+		
 		long st = System.nanoTime();
-		for (int i = 0; i < a.length - 1; i++) {
-			min = a[i];
-			for (int j = i + 1; j < a.length; j++) {
+		for (int i = 1; i < a.length; i++) {
+			mark = a[i];
+			swPos = i - 1;
+			while (swPos >= 0 && mark < a[swPos]) {
 				cCount++;
-				// find the minimum item to fill the dedicated left position
-				if (min > a[j]) {
-					min = a[j];
-					swPos = j;
-				}
-			}
-			
-			// swap with the left position
-			if (min < a[i]) {
-				a[swPos] = a[i];
-				a[i] = min;
+				// move bigger item to the right
+				a[swPos + 1] = a[swPos--];
 				sCount++;
 			}
+
+			// swap here
+			a[swPos + 1] = mark;
+			sCount++;
 		}
 		double d = (System.nanoTime() - st) / 1000;
 		
-		System.out.println("[selection] compare: " + cCount + ", swap: " + sCount + " in " + d + "µs");
+		System.out.println("[insert] compare: " + cCount + ", swap: " + sCount + " in " + d + "µs");
 		return a;
 	}
 }
