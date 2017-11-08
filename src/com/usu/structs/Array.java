@@ -45,4 +45,15 @@ public class Array {
 		}
 		System.out.println();
 	}
+	
+	/**
+	 * print any array
+	 * @param a
+	 */
+	public static void print(long[] a) {
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i] + (i < a.length - 1 ? " " : ""));
+		}
+		System.out.println();
+	}
 }
