@@ -1,6 +1,22 @@
 package com.usu.test.utils;
 
+import java.util.Scanner;
+
 public class Utils {
+	public static int openInput() {
+		Scanner reader = null;
+		try {
+			reader = new Scanner(System.in);
+			System.out.print("Enter a value: ");
+			return reader.nextInt();
+		} catch (Exception e) { 
+			// not sure 
+		} finally {
+			reader.close(); 
+		}
+		return -1;
+	}
+	
 	public static int[] getCharNums(String s) {
 		int[] sChars = new int[128];
 		for (int i = 0; i < s.length(); i++) {
