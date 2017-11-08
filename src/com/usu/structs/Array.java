@@ -11,11 +11,10 @@ public class Array {
 	}
 	
 	public boolean insert(long val) {
-		if (nElems <= maxLength - 1) {
-			array[nElems++] = val;
-			return true;
-		}
-		return false;
+		// check if array is full
+		if (nElems == maxLength) return false;
+		array[nElems++] = val;
+		return true;
 	}
 	
 	public boolean delete(long val) {
