@@ -20,4 +20,34 @@ public class OrderedArray extends Array {
 		nElems++;
 		return true;
 	}
+	
+	/**
+	 * [binary search] search item by key and return item's index 
+	 * if found otherwise return -1 
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public int find(long key) {
+		int min = 0, max = nElems - 1;
+		int mid = (min + max) / 2;
+		
+		while (min < max) {
+			// item found
+			if (key == array[mid]) return mid;
+			
+			if (key < array[mid]) {
+				// go to the first half
+				max = mid - 1;
+			} else {
+				// go to the second half
+				min = mid + 1;
+			}
+			mid = (min + max) / 2;
+		}
+		
+		
+		// can't find
+		return -1;
+	}
 }

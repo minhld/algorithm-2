@@ -18,9 +18,9 @@ public class testArray extends Thread {
 		}
 		a.print();
 		
-		int val = Utils.openInput();
-		System.out.println("attempting to delete " + a.delete(val));
-		a.print();
+		int key = Utils.openInput();
+		System.out.println("find key [" + key + "]: at index " + a.find(key));
+		// a.print();
 	}
 	
 	public void testNormalArray() {
