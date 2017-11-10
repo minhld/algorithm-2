@@ -3,6 +3,22 @@ package com.usu.test.utils;
 import java.util.Scanner;
 
 public class Utils {
+	/**
+	 * create an array with random values
+	 * 
+	 * @param size
+	 * @param range
+	 * @return
+	 */
+	public static long[] createArray(int size, int range) {
+		long[] a = new long[size]; 
+		for (int i = 0; i < a.length; i++) {
+			long rand = (long)(Math.random() * range);
+			a[i] = rand;
+		}
+		return a;
+	}
+	
 	public static int openInput() {
 		Scanner reader = null;
 		try {

@@ -39,7 +39,7 @@ public class testQueue extends Thread {
 		
 		Long l;
 		for (int i = 0; i < a.length + 3; i++) {
-			System.out.print(((l = queue.poll()) != null ? l : "void") + " ");
+			System.out.print(((l = queue.remove()) != null ? l : "void") + " ");
 		}
 		System.out.println();
 		queue.add(100000l);
