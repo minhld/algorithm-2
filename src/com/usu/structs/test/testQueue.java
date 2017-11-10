@@ -1,6 +1,7 @@
 package com.usu.structs.test;
 
 import com.usu.structs.Array;
+import com.usu.structs.Queue;
 
 public class testQueue extends Thread {
 	public void run() {
@@ -9,14 +10,25 @@ public class testQueue extends Thread {
 	}
 	
 	public void testAllQueue() {
-		long[] a = createArray(20, 1000);
+		long[] a = createArray(10, 1000);
 		Array.print(a);
 		
-	
+		Queue<Long> queue = new Queue<>(Long.class, 18);
 		for (int i = 0; i < a.length; i++) {
-			
+			boolean f = queue.add(a[i]);
+			if (!f) {
+				System.out.println("item #" + i + " with value " + a[i] + " cannot be added");
+			}
 		}
 		
+		Long l;
+		for (int i = 0; i < a.length + 3; i++) {
+			System.out.print(((l = queue.poll()) != null ? l : "void") + " ");
+		}
+		System.out.println();
+		queue.add(100000l);
+		
+		Queue.print(queue);
 	}
 	
 	public void testExistQueue() {
