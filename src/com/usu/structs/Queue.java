@@ -2,6 +2,14 @@ package com.usu.structs;
 
 import java.lang.reflect.Array;
 
+/**
+ * provide functions:
+ * 	- add, poll, peek, isEmpty, isFull, size
+ * 
+ * @author minhle
+ *
+ * @param <T>
+ */
 @SuppressWarnings("unchecked")
 public class Queue<T> {
 	T[] array;
@@ -62,7 +70,7 @@ public class Queue<T> {
 	}
 	
 	/**
-	 * this will flush out the entire stack
+	 * this will flush out the entire queue
 	 */
 	public static <T> void print(Queue<T> s) {
 		while (!s.isEmpty()) {

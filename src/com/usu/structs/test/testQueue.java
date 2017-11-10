@@ -1,12 +1,28 @@
 package com.usu.structs.test;
 
 import com.usu.structs.Array;
+import com.usu.structs.PriorityQueue;
 import com.usu.structs.Queue;
 
 public class testQueue extends Thread {
 	public void run() {
 		// testExistQueue();
-		testAllQueue();
+		// testAllQueue();
+		testPriorityQueue();
+	}
+	
+	public void testPriorityQueue() {
+		long[] a = createArray(100, 1000);
+		Array.print(a);
+		
+		PriorityQueue<Long> pQueue = new PriorityQueue<>(Long.class, 18);
+		for (int i = 0; i < a.length; i++) {
+			boolean f = pQueue.add(a[i]);
+			if (!f) {
+				System.out.println("item #" + i + " with value " + a[i] + " cannot be added");
+			}
+		}
+		Queue.print(pQueue);
 	}
 	
 	public void testAllQueue() {

@@ -2,6 +2,14 @@ package com.usu.structs;
 
 import java.lang.reflect.Array;
 
+/**
+ * provide functions: 
+ * 	- push, pop, peek, isEmpty, size
+ * 
+ * @author minhle
+ *
+ * @param <T>
+ */
 public class Stack<T> {
 	T[] array;
 	int top = -1;
