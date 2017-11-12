@@ -19,7 +19,7 @@ public class SavedMergeSort {
 		long st = System.nanoTime();
 		sort(a, 0, a.length - 1);
 		double d = (System.nanoTime() - st) / 1000;
-		System.out.println("[merge] compare: " + cCount + ", swap: " + sCount + " in " + d + "�s");
+		System.out.println("[saved-merge] compare: " + cCount + ", swap: " + sCount + " in " + d + "�s");
 		return a;
 	}
 	
@@ -49,21 +49,26 @@ public class SavedMergeSort {
 		// pick the consecutively smallest item from two arrays
 		while (idx1 <= mid && idx2 <= max) {
 			m[idx++] = a[idx1] <= a[idx2] ? a[idx1++] : a[idx2++];
+			cCount++;
+			sCount++;
 		}
 		
 		// add the remain items from the list #1 if there are
-		while (idx1 < a.length) {
+		while (idx1 <= mid) {
 			m[idx++] = a[idx1++];
+			sCount++;
 		}
 
 		// add the remain items from the list #2 if there are
-		while (idx2 < a.length) {
+		while (idx2 <= max) {
 			m[idx++] = a[idx2++];
+			sCount++;
 		}
 		
 		// return to the original array
 		for (int i = min; i <= max; i++) {
 			a[i] = m[i];
+			sCount++;
 		}
 	}
 }

@@ -1,6 +1,8 @@
 package com.usu.structs.test;
 
 import com.usu.sorts.complex.MergeSort;
+import com.usu.sorts.complex.QuickSort;
+import com.usu.sorts.complex.SavedMergeSort;
 import com.usu.sorts.simple.BubbleSort;
 import com.usu.sorts.simple.InsertSort;
 import com.usu.sorts.simple.SelectionSort;
@@ -18,7 +20,7 @@ public class testArray extends Thread {
 	}
 	
 	public void testAllSorts() {
-		long[] a1 = createArray(10000, 10000);
+		long[] a1 = createArray(1000, 10000);
 		long[] a2 = copyArray(a1);
 		long[] a3 = copyArray(a1);
 		long[] a6 = copyArray(a1);
@@ -29,6 +31,8 @@ public class testArray extends Thread {
 		SelectionSort.sort(a2);
 		Array.print(InsertSort.sort(a3));
 		Array.print(MergeSort.sort(a6));
+		Array.print(SavedMergeSort.sort(a7));
+		Array.print(QuickSort.sort(a8));
 //		Array.print(BubbleSort.sort(a1));
 //		Array.print(SelectionSort.sort(a2));
 //		Array.print(InsertSort.sort(a3));

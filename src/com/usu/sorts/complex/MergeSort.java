@@ -37,16 +37,20 @@ public class MergeSort {
 		// pick the consecutively smallest item from two arrays
 		while (idx1 < a1.length && idx2 < a2.length) {
 			d[idx++] = a1[idx1] <= a2[idx2] ? a1[idx1++] : a2[idx2++];
+			cCount++;
+			sCount++;
 		}
 		
 		// add the remain items from the list #1 if there are
 		while (idx1 < a1.length) {
 			d[idx++] = a1[idx1++];
+			sCount++;
 		}
 
 		// add the remain items from the list #2 if there are
 		while (idx2 < a2.length) {
 			d[idx++] = a2[idx2++];
+			sCount++;
 		}
 
 		return d;
