@@ -1,6 +1,7 @@
 package com.usu.structs.test;
 
 import com.usu.structs.Array;
+import com.usu.structs.LinkQueue;
 import com.usu.structs.PriorityQueue;
 import com.usu.structs.Queue;
 
@@ -8,7 +9,22 @@ public class testQueue extends Thread {
 	public void run() {
 		// testExistQueue();
 		// testAllQueue();
-		testPriorityQueue();
+		// testPriorityQueue();
+		testLinkQueue();
+	}
+	
+	public void testLinkQueue() {
+		long[] a = createArray(100, 1000);
+		Array.print(a);
+		
+		LinkQueue<Long> pQueue = new LinkQueue<>();
+		for (int i = 0; i < a.length; i++) {
+			boolean f = pQueue.add(a[i]);
+			if (!f) {
+				System.out.println("item #" + i + " with value " + a[i] + " cannot be added");
+			}
+		}
+		LinkQueue.print(pQueue);
 	}
 	
 	public void testPriorityQueue() {

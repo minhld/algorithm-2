@@ -27,6 +27,10 @@ public class LinkedList<T> {
 		return rem;
 	}
 	
+	public Link<T> peek() {
+		return first;
+	}
+	
 	public Link<T> find(T key) {
 		Link<T> f = first;
 
@@ -67,5 +71,15 @@ public class LinkedList<T> {
 			c = c.next;
 		}
 		System.out.println();
+	}
+	
+	public int size() {
+		int count = 0;
+		Link<T> c = first;
+		while (c != null) {
+			c = c.next;
+			count++;
+		}
+		return count;
 	}
 }

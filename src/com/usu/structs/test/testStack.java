@@ -1,12 +1,26 @@
 package com.usu.structs.test;
 
 import com.usu.structs.Array;
+import com.usu.structs.LinkStack;
 import com.usu.structs.Stack;
 
 public class testStack extends Thread {
 	public void run() {
 		// testExistStack();
-		testAllStack();
+		// testAllStack();
+		testLinkedStack();
+	}
+	
+	public void testLinkedStack() {
+		long[] a = createArray(20, 1000);
+		Array.print(a);
+		
+		LinkStack<Long> stack = new LinkStack<>();
+		
+		for (int i = 0; i < a.length; i++) {
+			stack.push(a[i]);
+		}
+		LinkStack.print(stack);
 	}
 	
 	public void testAllStack() {
