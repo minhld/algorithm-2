@@ -10,10 +10,12 @@ package com.usu.structs;
 public class LinkedList<T> {
 	Link<T> first;
 	
-	public void addFirst(T data) {
+	
+	public Link<T> addFirst(T data) {
 		Link<T> l = new Link<T>(data);
 		l.next = first;
 		first = l;
+		return first;
 	}
 	
 	public Link<T> removeFirst() {
@@ -23,6 +25,35 @@ public class LinkedList<T> {
 		Link<T> rem = first;
 		first = first.next;
 		return rem;
+	}
+	
+	public Link<T> find(T key) {
+		Link<T> f = first;
+
+		// travel the list and check if f's value equals
+		// to the key
+		while (f != null && !f.data.equals(key)) {
+			f = f.next;
+		}
+
+		return f;
+	}
+	
+	public Link<T> delete(T key) {
+		Link<T> p = null;	// previous link of the first
+		Link<T> f = first;
+
+		// travel the list and check if f's value equals
+		// to the key, update the p-link too
+		while (f != null && !f.data.equals(key)) {
+			p = f;
+			f = f.next;
+		}
+
+		if (p != null && f != null) {
+			p.next = f.next;
+		}
+		return f;
 	}
 	
 	public boolean isEmpty() {
