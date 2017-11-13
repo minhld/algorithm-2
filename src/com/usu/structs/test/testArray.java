@@ -3,6 +3,7 @@ package com.usu.structs.test;
 import com.usu.sorts.complex.MergeSort;
 import com.usu.sorts.complex.QuickSort;
 import com.usu.sorts.complex.SavedMergeSort;
+import com.usu.sorts.complex.ShellSort;
 import com.usu.sorts.simple.BubbleSort;
 import com.usu.sorts.simple.InsertSort;
 import com.usu.sorts.simple.SelectionSort;
@@ -32,7 +33,7 @@ public class testArray extends Thread {
 		Array.print(InsertSort.sort(a3));
 		Array.print(MergeSort.sort(a6));
 		Array.print(SavedMergeSort.sort(a7));
-		Array.print(QuickSort.sort(a8));
+		Array.print(ShellSort.sort(a8));
 //		Array.print(BubbleSort.sort(a1));
 //		Array.print(SelectionSort.sort(a2));
 //		Array.print(InsertSort.sort(a3));
