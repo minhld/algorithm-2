@@ -19,7 +19,7 @@ public class SavedMergeSort {
 		long st = System.nanoTime();
 		sort(a, 0, a.length - 1);
 		double d = (System.nanoTime() - st) / 1000;
-		System.out.println("[saved-merge] compare: " + cCount + ", swap: " + sCount + " in " + d + "ï¿½s");
+		System.out.println("[saved-merge] compare: " + cCount + ", swap: " + sCount + " in " + d + "µs");
 		return a;
 	}
 	

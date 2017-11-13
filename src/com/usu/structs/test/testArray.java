@@ -21,7 +21,7 @@ public class testArray extends Thread {
 	}
 	
 	public void testAllSorts() {
-		long[] a1 = createArray(1000, 10000);
+		long[] a1 = createArray(1000, 1000);
 		long[] a2 = copyArray(a1);
 		long[] a3 = copyArray(a1);
 		long[] a6 = copyArray(a1);

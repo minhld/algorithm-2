@@ -23,12 +23,12 @@ public class ShellSort {
 		int numInGap = a.length / gap + 1;
 		long temp;
 		
-		for (int i = 0; i < gap - 1; i++) {
+		for (int i = 0; i < gap; i++) {
 			for (int j = 0; j < numInGap && i + gap * j < a.length; j++) {
 				idx = i + gap * j;
 				pIdx = i + gap * (j - 1);
 				temp = a[idx];
-				while (pIdx >= 0 && a[idx] < a[pIdx]) {
+				while (pIdx >= 0 && temp < a[pIdx]) {
 					a[idx] = a[pIdx];
 					idx = pIdx;
 					pIdx = pIdx - gap;

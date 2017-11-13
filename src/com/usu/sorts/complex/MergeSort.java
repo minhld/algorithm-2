@@ -8,7 +8,7 @@ public class MergeSort {
 		long st = System.nanoTime();
 		long[] m = sort(a, 0, a.length - 1);
 		double d = (System.nanoTime() - st) / 1000;
-		System.out.println("[merge] compare: " + cCount + ", swap: " + sCount + " in " + d + "ï¿½s");
+		System.out.println("[merge] compare: " + cCount + ", swap: " + sCount + " in " + d + "µs");
 		return m;
 	}
 	
