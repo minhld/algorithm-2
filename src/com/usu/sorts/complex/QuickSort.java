@@ -8,7 +8,7 @@ public class QuickSort {
 		long st = System.nanoTime();
 		sort(a, 0, a.length - 1);
 		long d = (System.nanoTime() - st) / 1000;
-		System.out.println("[quick] compare: " + cCount + ", swap: " + sCount + " in " + d + "µs");
+		System.out.println("[quick] compare: " + cCount + ", swap: " + sCount + " in " + d + "ï¿½s");
 		return a;
 	}
 	
@@ -22,19 +22,19 @@ public class QuickSort {
 		}
 	}
 	
-	private static int partition(long[] a, int left, int right, long pivot) {
+	public static int partition(long[] a, int left, int right, long pivot) {
 		int leftPtr = left;
 		int rightPtr = right;
 		
 		while (true) {
 			// move left cursor to the right
-			while (leftPtr < right && a[leftPtr] <= pivot) {
+			while (leftPtr <= right && a[leftPtr] < pivot) {
 				leftPtr++;
 				cCount++;
 			}
 			
 			// move right cursor to the left
-			while (rightPtr > left && a[rightPtr] >= pivot) {
+			while (rightPtr >= left && a[rightPtr] > pivot) {
 				rightPtr--;
 				cCount++;
 			}
@@ -42,7 +42,7 @@ public class QuickSort {
 			if (leftPtr >= rightPtr) {
 				break;
 			} else {
-				swap(a, leftPtr, rightPtr);
+				swap(a, leftPtr++, rightPtr--);
 				sCount++;
 			}
 		}
