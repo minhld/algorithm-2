@@ -21,7 +21,7 @@ public class testArray extends Thread {
 	}
 	
 	public void testAllSorts() {
-		long[] a1 = createArray(30, 100);
+		long[] a1 = createArray(1000, 1000);
 		long[] a2 = copyArray(a1);
 		long[] a3 = copyArray(a1);
 		long[] a6 = copyArray(a1);
@@ -29,20 +29,13 @@ public class testArray extends Thread {
 		long[] a8 = copyArray(a1);
 		long[] a9 = copyArray(a1);
 		
-//		BubbleSort.sort(a1);
-//		SelectionSort.sort(a2);
-//		Array.print(InsertSort.sort(a3));
-//		Array.print(MergeSort.sort(a6));
-//		Array.print(SavedMergeSort.sort(a7));
-//		Array.print(ShellSort.sort(a8));
-		Array.print(a9);
-		Array.print(QuickSort.sort(a8));
-		
-		System.out.println(a9[0]);
-		int idx = QuickSort.partition(a9, 0, a9.length - 1, a9[0]);
-		System.out.println(idx);
-		Array.print(a9);
-		
+		BubbleSort.sort(a1);
+		SelectionSort.sort(a2);
+		Array.print(InsertSort.sort(a3));
+		Array.print(MergeSort.sort(a6));
+		Array.print(SavedMergeSort.sort(a7));
+		Array.print(ShellSort.sort(a8));
+		Array.print(QuickSort.sort(a9));
 	}
 	
 	public void testSelectionSort() {

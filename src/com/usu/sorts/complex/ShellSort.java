@@ -34,8 +34,10 @@ public class ShellSort {
 				idx = i + gap * j;
 				pIdx = i + gap * (j - 1);
 				temp = a[idx];
+				cCount++;
 				while (pIdx >= 0 && temp < a[pIdx]) {
 					a[idx] = a[pIdx];
+					sCount++;
 					idx = pIdx;
 					pIdx = pIdx - gap;
 				}
