@@ -13,11 +13,17 @@ public class ShellSort {
 			gap = (gap - 1) / 3;
 		}
 		double d = (System.nanoTime() - st) / 1000;
-		System.out.println("[shell] compare: " + cCount + ", swap: " + sCount + " in " + d + "ï¿½s");
+		System.out.println("[shell] compare: " + cCount + ", swap: " + sCount + " in " + d + "µs");
 		
 		return a;
 	}
 	
+	/**
+	 * sort in an array created by items distanced by a gap
+	 * 
+	 * @param a
+	 * @param gap
+	 */
 	private static void sort(long[] a, int gap) {
 		int idx, pIdx;
 		int numInGap = a.length / gap + 1;
@@ -38,6 +44,12 @@ public class ShellSort {
 		}
 	}
 	
+	/**
+	 * find the last possible gap by array's length 
+	 * 
+	 * @param size
+	 * @return
+	 */
 	private static int findLargestGap(int size) {
 		int gap = 0;
 		while (3 * gap + 1 < size) {

@@ -21,22 +21,22 @@ public class testArray extends Thread {
 	}
 	
 	public void testAllSorts() {
-		long[] a1 = createArray(1000, 1000);
+		long[] a1 = createArray(100, 1000);
 		long[] a2 = copyArray(a1);
 		long[] a3 = copyArray(a1);
 		long[] a6 = copyArray(a1);
 		long[] a7 = copyArray(a1);
 		long[] a8 = copyArray(a1);
+		long[] a9 = copyArray(a1);
 		
-		BubbleSort.sort(a1);
-		SelectionSort.sort(a2);
-		Array.print(InsertSort.sort(a3));
-		Array.print(MergeSort.sort(a6));
-		Array.print(SavedMergeSort.sort(a7));
-		Array.print(ShellSort.sort(a8));
-//		Array.print(BubbleSort.sort(a1));
-//		Array.print(SelectionSort.sort(a2));
+//		BubbleSort.sort(a1);
+//		SelectionSort.sort(a2);
 //		Array.print(InsertSort.sort(a3));
+//		Array.print(MergeSort.sort(a6));
+//		Array.print(SavedMergeSort.sort(a7));
+//		Array.print(ShellSort.sort(a8));
+		Array.print(QuickSort.sort(a9));
+		
 	}
 	
 	public void testSelectionSort() {
