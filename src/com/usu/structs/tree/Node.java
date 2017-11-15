@@ -3,6 +3,7 @@ package com.usu.structs.tree;
 public class Node<T> {
 	public int key;
 	public T data;
+	public int height;
 	public Node<T> left;
 	public Node<T> right;
 	
@@ -13,6 +14,8 @@ public class Node<T> {
 	
 	@Override
 	public String toString() {
-		return "{key: " + key + ", data: " + data.toString() + "}";
+		return "{key: " + key + ", " + 
+				"data: " + data.toString() + ", " + 
+				"height: " + height + "}";
 	}
 }

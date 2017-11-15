@@ -20,6 +20,7 @@ public class testTree extends Thread {
 		t.insert(30, 30);
 		t.insert(22, 22);
 		t.insert(32, 32);
+		t.insert(32, 32);
 		
 		t.display();
 		

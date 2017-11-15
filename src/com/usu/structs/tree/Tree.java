@@ -18,13 +18,13 @@ public class Tree<T> {
 		return c;
 	}
 	
-	public void insert(int key, T data) {
+	public boolean insert(int key, T data) {
 		Node<T> n = new Node<T>(key, data);
 		Node<T> c = root;
 		
 		if (root == null) {
 			root = n;
-			return;
+			return true;
 		}
 		
 		Node<T> p = null;
@@ -40,11 +40,15 @@ public class Tree<T> {
 			}
 		}
 		
+		// duplicated key will be omitted
+		if (c != null && c.key == key) return false;
+		
 		if (isOnLeft) {
 			p.left = n;
 		} else {
 			p.right = n;
 		}
+		return true;
 	}
 	
 	public boolean delete(int key) {
@@ -166,6 +170,18 @@ public class Tree<T> {
 		}
 	}
 	
+	private void updateHeight() {
+		
+	}
+	
+	/*
+	 * get height of the tree
+	 */
+    private int height(Node<T> n) {
+    	if (n == null) return 0;
+    	return n.height;
+    }
+    
 	/*
 	public void display2() {
 		inOrder(root);
