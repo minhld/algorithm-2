@@ -56,7 +56,11 @@ public class LinkedList<T> {
 
 		if (p != null && f != null) {
 			p.next = f.next;
+		} else if (p == null && f != null) {
+			// found at the first link
+			first = null;
 		}
+		
 		return f;
 	}
 	

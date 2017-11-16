@@ -13,11 +13,13 @@ public class testHashTable extends Thread {
 		hash.put("A", 1l);
 		hash.put("B", 5l);
 		hash.put("A", 8l);
+		hash.put("A", 6l);
+		hash.put("A", 16l);
 		hash.put("D", 3l);
 		hash.put("C", 9l);
 		hash.put("F", 2l);
 		
-		System.out.println("val: " + hash.get("C"));
+		System.out.println("val: " + hash.get("C") + ", size: " + hash.size());
 	}
 	
 	public void testExistingTable() {

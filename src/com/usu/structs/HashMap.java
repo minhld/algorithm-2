@@ -60,4 +60,14 @@ public class HashMap<A, B> {
 		return null;
 	}
 	
+	public int size() {
+		int count = 0;
+		for (int i = 0; i < list.length; i++) {
+			if (list[i] != null) {
+				count += list[i].size();
+			}
+		}
+		return count;
+	}
+	
 }
