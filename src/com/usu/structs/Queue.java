@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 
 /**
  * provide functions:
- * 	- add, remove, peek, isEmpty, isFull, size
+ * 	- add, poll, peek, isEmpty, isFull, size
  * 
  * @author minhle
  *
@@ -33,7 +33,7 @@ public class Queue<T> {
 		return true;
 	}
 	
-	public T remove() {
+	public T poll() {
 		// if the queue is empty
 		if (isEmpty()) return null;
 		
@@ -74,7 +74,7 @@ public class Queue<T> {
 	 */
 	public static <T> void print(Queue<T> s) {
 		while (!s.isEmpty()) {
-			T e = s.remove();
+			T e = s.poll();
 			System.out.print(e + " ");
 		}
 	}

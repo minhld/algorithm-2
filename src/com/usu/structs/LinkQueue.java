@@ -2,7 +2,7 @@ package com.usu.structs;
 
 /**
  * provide functions:
- * 	- add, remove, peek, isEmpty, isFull, size
+ * 	- add, poll, peek, isEmpty, isFull, size
  * 
  * @author minhle
  *
@@ -20,7 +20,7 @@ public class LinkQueue<T> {
 		return true;
 	}
 	
-	public T remove() {
+	public T poll() {
 		Link<T> r = list.removeFirst();
 		return r != null ? r.data : null;
 	}
@@ -43,7 +43,7 @@ public class LinkQueue<T> {
 	 */
 	public static <T> void print(LinkQueue<T> s) {
 		while (!s.isEmpty()) {
-			T e = s.remove();
+			T e = s.poll();
 			System.out.print(e + " ");
 		}
 	}

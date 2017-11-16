@@ -156,7 +156,7 @@ public class Tree<T> {
 			if (qSize == 0) break;
 			
 			while (--qSize >= 0) {
-				c = q.remove();
+				c = q.poll();
 				System.out.print(c.data.toString() + " ");
 				
 				if (c.left != null) {
