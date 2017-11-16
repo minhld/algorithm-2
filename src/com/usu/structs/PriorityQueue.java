@@ -40,7 +40,7 @@ public class PriorityQueue<T> extends Queue<T> {
 			nSwap = (nSwap == 0 ? maxLength - 1 : nSwap - 1);
 			
 			// if the evaluating item is at the rear position
-			// it should be stop
+			// it should be stopped
 			if (nSwap == rear) break;			
 		}
 		

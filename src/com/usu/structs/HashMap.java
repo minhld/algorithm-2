@@ -1,6 +1,9 @@
 package com.usu.structs;
 
 /**
+ * insertion & searching in hash tables can approach O(1), 
+ * in this implementation I used "Separate Chaining" which
+ * use Linked-List to resolve collision
  * 
  * @author minhld
  *
