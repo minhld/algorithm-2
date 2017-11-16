@@ -60,6 +60,20 @@ public class HashMap<A, B> {
 		return null;
 	}
 	
+	/**
+	 * remove a key out of the hash-map
+	 * 
+	 * @param key
+	 * @return  the previous value associated with key, 
+	 * 			or null if there was no mapping for key
+	 */
+	public B remove(A key) {
+		int hashedKey = hashCode(key);
+		LinkedList2<A, B> bList = list[hashedKey];
+		com.usu.structs.LinkedList2<A, B>.Link l = bList.delete(key);
+		return l != null ? l.data : null;
+	}
+	
 	public int size() {
 		int count = 0;
 		for (int i = 0; i < list.length; i++) {

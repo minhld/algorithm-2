@@ -18,8 +18,9 @@ public class testHashTable extends Thread {
 		hash.put("D", 3l);
 		hash.put("C", 9l);
 		hash.put("F", 2l);
+		hash.remove("A");
 		
-		System.out.println("val: " + hash.get("C") + ", size: " + hash.size());
+		System.out.println("val: " + hash.get("A") + ", size: " + hash.size());
 	}
 	
 	public void testExistingTable() {
