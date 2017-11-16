@@ -2,6 +2,7 @@ package com.usu.structs.test;
 
 import java.util.LinkedList;
 
+import com.usu.structs.Heap;
 import com.usu.structs.PriorityQueue;
 
 public class testHeap extends Thread {
@@ -9,14 +10,17 @@ public class testHeap extends Thread {
 		testExistingHeap();
 	}
 	
-	public void testHeap() {
-		PriorityQueue<Long> q = new PriorityQueue<>(Long.class, 100);
+	public void testMyHeap() {
+		// PriorityQueue<Long> q = new PriorityQueue<>(Long.class, 100);
+		Heap<Long> h = new Heap<>(Long.class, 100);
+		
 	}
 	
 	public void testExistingHeap() {
 		java.util.Queue<Long> q1 = new LinkedList<>();
 				
 		java.util.PriorityQueue<Long> q = new java.util.PriorityQueue<>();
+		
 		q.add(5l);
 		q.add(3l);
 		q.add(2l);
