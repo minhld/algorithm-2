@@ -74,6 +74,28 @@ public class Heap<T> {
 			int c = (2 * p + 1);
 			
 			while (true) {
+				if (c + 1 < nItems) {
+					// the right child is available
+					if (compare(a[c], a[c + 1]) < 0) {
+						// if right child is larger
+						c = c + 1;
+					}
+					
+					if (compare(a[p], a[c]) < 0) {
+						p = c;
+						c = (2 * c + 1);	// move to its child
+					} else {
+						a[p] = a[c];		// switch one level down
+						break;				// stop here
+					}
+				} else {
+					// only left child is available
+					if (compare(a[p], a[c]) < 0) {
+						p = c;
+						c = (2 * c + 1);	// move to its child
+					}
+				}
+				
 				if ((c < nItems - 1 && compare(a[c], a[c + 1]) >= 0) ||
 					(c == nItems - 1)){
 					a[p] = a[c];
@@ -97,14 +119,14 @@ public class Heap<T> {
 	}
 	
 	public T peek() {
-		
+		return nItems > 0 ? a[0] : null;
 	}
 	
 	public int size() {
 		return nItems;
 	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "rawtypes" })
 	private int compare(T i1, T i2) {
 		return ((Comparable) i1).compareTo(i2);
 	}
