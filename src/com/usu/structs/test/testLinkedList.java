@@ -8,6 +8,7 @@ import com.usu.test.utils.Utils;
 
 public class testLinkedList extends Thread {
 	public void run() {
+//		testExistQueue();
 //		testLinkedList1();
 //		testLinkedList2();
 		testDLinkedList1();
@@ -104,7 +105,13 @@ public class testLinkedList extends Thread {
 		java.util.LinkedList<Long> llist = new java.util.LinkedList<Long>();
 		long[] a = Utils.createArray(100, 1000);
 		for (int i = 0; i < a.length; i++) {
-			llist.add(a[i]);
+			llist.addFirst(a[i]);
+			System.out.print(a[i] + " ");
+		}
+		System.out.println();
+		
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(llist.poll() + " ");
 		}
 	}
 	
