@@ -1,5 +1,6 @@
 package com.usu.structs.test;
 
+import com.usu.sorts.complex.HeapSort;
 import com.usu.sorts.complex.MergeSort;
 import com.usu.sorts.complex.QuickSort;
 import com.usu.sorts.complex.SavedMergeSort;
@@ -28,6 +29,7 @@ public class testArray extends Thread {
 		long[] a7 = copyArray(a1);
 		long[] a8 = copyArray(a1);
 		long[] a9 = copyArray(a1);
+		long[] a5 = copyArray(a1);
 		
 		BubbleSort.sort(a1);
 		SelectionSort.sort(a2);
@@ -36,6 +38,7 @@ public class testArray extends Thread {
 		Array.print(SavedMergeSort.sort(a7));
 		Array.print(ShellSort.sort(a8));
 		Array.print(QuickSort.sort(a9));
+		Array.print(HeapSort.sort(a5));
 	}
 	
 	public void testSelectionSort() {

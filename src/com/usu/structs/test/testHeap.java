@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import com.usu.structs.Heap;
 import com.usu.structs.PriorityQueue;
+import com.usu.structs.Heap.HeapType;
 import com.usu.test.utils.Utils;
 
 public class testHeap extends Thread {
@@ -15,7 +16,7 @@ public class testHeap extends Thread {
 	public void testMyHeap() {
 		long[] a = Utils.createArray(105, 1000);
 		// PriorityQueue<Long> q = new PriorityQueue<>(Long.class, 100);
-		Heap<Long> h = new Heap<>(Long.class, a.length);
+		Heap<Long> h = new Heap<>(Long.class, HeapType.decrease, a.length);
 		for (int i = 0; i < a.length; i++) {
 			h.add(a[i]);
 		}

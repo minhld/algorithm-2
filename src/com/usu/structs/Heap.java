@@ -19,11 +19,18 @@ import java.lang.reflect.Array;
  */
 @SuppressWarnings("unchecked")
 public class Heap<T> {
+	public enum HeapType {
+		increase,
+		decrease
+	}
+	
 	T[] a;
 	int maxLength;
 	int nItems;
+	HeapType ht;
 	
-	public Heap(Class<T> c, int max) {
+	public Heap(Class<T> c, HeapType ht, int max) {
+		this.ht = ht;
 		maxLength = max;
 		a = (T[]) Array.newInstance(c, maxLength);
 	}
@@ -116,6 +123,7 @@ public class Heap<T> {
 	
 	@SuppressWarnings({ "rawtypes" })
 	private int compare(T i1, T i2) {
-		return ((Comparable) i1).compareTo(i2);
+		int d = (ht == HeapType.decrease ? 1 : -1); 
+		return d * ((Comparable) i1).compareTo(i2);
 	}
 }
