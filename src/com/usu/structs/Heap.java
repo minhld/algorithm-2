@@ -19,11 +19,18 @@ import java.lang.reflect.Array;
  */
 @SuppressWarnings("unchecked")
 public class Heap<T> {
+	public enum HeapType {
+		increase,
+		decrease
+	}
+	
 	T[] a;
 	int maxLength;
 	int nItems;
+	HeapType ht;
 	
-	public Heap(Class<T> c, int max) {
+	public Heap(Class<T> c, HeapType ht, int max) {
+		this.ht = ht;
 		maxLength = max;
 		a = (T[]) Array.newInstance(c, maxLength);
 	}
@@ -32,7 +39,7 @@ public class Heap<T> {
 	/**
 	 * parent of n will be (n - 1)/2
 	 * 
-	 * @param i
+	 * @param i adding item
 	 * @return
 	 */
 	public boolean add(T i) {
@@ -47,10 +54,10 @@ public class Heap<T> {
 			
 			// compare child with its parent to decide 
 			// whether to move up one level up
-			while (p >= 0 && compare(a[c], a[p]) > 0) {
+			while (p >= 0 && compare(i, a[p]) > 0) {
 				a[c] = a[p];
 				c = p;
-				p = (p - 1) / 2;
+				p = (int) Math.floor(((double) p - 1) / 2);
 			}
 			a[c] = i;
 		}
@@ -68,50 +75,31 @@ public class Heap<T> {
 		T v = a[0];
 		
 		if (nItems > 1) {
-			a[0] = a[nItems--];
+			a[0] = a[nItems-- - 1];
+			T r = a[0];
 			
 			int p = 0;
 			int c = (2 * p + 1);
 			
 			while (true) {
-				if (c + 1 < nItems) {
-					// the right child is available
-					if (compare(a[c], a[c + 1]) < 0) {
-						// if right child is larger
-						c = c + 1;
-					}
-					
-					if (compare(a[p], a[c]) < 0) {
-						p = c;
-						c = (2 * c + 1);	// move to its child
-					} else {
-						a[p] = a[c];		// switch one level down
-						break;				// stop here
-					}
+				if (c + 1 < nItems && compare(a[c], a[c + 1]) < 0) {
+					// if right child is larger
+					c = c + 1;
+				}
+		
+				// check the values of parent and child
+				if (c + 1 < nItems && compare(r, a[c]) < 0) {
+					a[p] = a[c];		// switch one level up
+					p = c;
+					c = (2 * c + 1);	// move to its child
 				} else {
-					// only left child is available
-					if (compare(a[p], a[c]) < 0) {
-						p = c;
-						c = (2 * c + 1);	// move to its child
-					}
+					a[p] = r;
+					break;				// stop here
 				}
-				
-				if ((c < nItems - 1 && compare(a[c], a[c + 1]) >= 0) ||
-					(c == nItems - 1)){
-					a[p] = a[c];
-					p = c;
-					c = (2 * c + 1);
-				} else if (c < nItems - 1 && compare(a[c], a[c + 1]) < 0) {
-					p = c;
-					c = (2 * c + 2);
-				}
-				break;
 			}
-			
-			a[p] = v;
 		} else {
 			// only one item
-			a[0] = null;
+			// a[0] = null;
 			nItems = 0;
 		}
 		
@@ -126,8 +114,16 @@ public class Heap<T> {
 		return nItems;
 	}
 	
+	public void display() {
+		while (nItems >= 0) {
+			System.out.print(poll() + " ");
+			nItems--;
+		}
+	}
+	
 	@SuppressWarnings({ "rawtypes" })
 	private int compare(T i1, T i2) {
-		return ((Comparable) i1).compareTo(i2);
+		int d = (ht == HeapType.decrease ? 1 : -1); 
+		return d * ((Comparable) i1).compareTo(i2);
 	}
 }
