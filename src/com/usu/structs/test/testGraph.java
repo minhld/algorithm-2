@@ -23,7 +23,9 @@ public class testGraph extends Thread {
 		g.addEdge("G", "I");
 		g.addEdge("A", "E");
 		
-		g.dfs();
+		//g.dfs();
+		
+		g.bfs();
 	}
 	
 	public static void main(String args[]) {

@@ -1,6 +1,7 @@
 package com.usu.structs.graph;
 
 import com.usu.structs.HashMap;
+import com.usu.structs.LinkQueue;
 import com.usu.structs.LinkStack;
 
 /**
@@ -13,14 +14,17 @@ public class Graph {
 	final int MAX_VERTS = 20;
 	Vertex[] vertexList;
 	HashMap<String, Integer> vIndexMap;
-	LinkStack<Integer> stack;
 	int adjMat[][];
 	int nVerts;
+	
+	LinkStack<Integer> stack;
+	LinkQueue<Integer> queue;
 	
 	public Graph() {
 		vIndexMap = new HashMap<>();
 		stack = new LinkStack<>();
-		 
+		queue = new LinkQueue<>();
+		
 		// setup everything to zero
 		adjMat = new int[MAX_VERTS][MAX_VERTS];
 		vertexList = new Vertex[MAX_VERTS];
@@ -45,25 +49,59 @@ public class Graph {
 		// current and next adjunct vertices
 		int v, n;
 		while (!stack.isEmpty()) {
-			v = stack.pop();
-			n = getUnvisitedVertex(v);
+			v = stack.peek();
+			
+			// find the adjunct vertex
+			n = -1;
+			for (int i = 0; i < nVerts; i++) {
+				if (adjMat[v][i] == 1 && !vertexList[i].isVisited) {
+					n = i;
+					break;
+				}
+			}
+			
 			if (n >= 0) {
 				vertexList[n].isVisited = true;
 				displayVertex(n);
 				stack.push(n);
-				System.out.print(n);
-			} 
+				// System.out.print(n + " ");
+			} else {
+				stack.pop();
+				if (stack.size() == 1) {
+					System.out.println();
+					displayVertex(0);
+				} 
+			}
 		}
 	}
 	
-	public int getUnvisitedVertex(int v) {
-		for (int i = 0; i < nVerts; i++) {
-			if (adjMat[v][i] == 1 && !vertexList[i].isVisited) {
-				return i;
+	/**
+	 * breadth-first search
+	 */
+	public void bfs() {
+		// start with the first item
+		vertexList[0].isVisited = true;
+		queue.add(0);
+
+		// current and next adjunct vertices
+		int v, n = 1;
+		while (!queue.isEmpty()) {
+			n = queue.size();
+			
+			while (--n >= 0) {
+				v = queue.poll();
+				displayVertex(v);
+				
+				// find all adjunct vertices from the current one
+				for (int i = 0; i < nVerts; i++) {
+					if (adjMat[v][i] == 1 && !vertexList[i].isVisited) {
+						vertexList[i].isVisited = true;
+						queue.add(i);
+					}
+				}
 			}
+			System.out.println();
 		}
-		// not found
-		return -1;
 	}
 	
 	public void addVertex(String label) {
@@ -79,6 +117,6 @@ public class Graph {
 	}
 	
 	public void displayVertex(int v) {
-		System.out.print(vertexList[v].label);
+		System.out.print(vertexList[v].label + " ");
 	}
 }

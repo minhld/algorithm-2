@@ -170,8 +170,8 @@ public class Tree<T> {
 		}
 	}
 	
-	private void updateHeight() {
-		
+	public void updateHeight() {
+		height(null);
 	}
 	
 	/*

@@ -1,9 +1,6 @@
 package com.usu.structs.test;
 
-import java.util.LinkedList;
-
 import com.usu.structs.Heap;
-import com.usu.structs.PriorityQueue;
 import com.usu.structs.Heap.HeapType;
 import com.usu.test.utils.Utils;
 
@@ -24,7 +21,7 @@ public class testHeap extends Thread {
 	}
 	
 	public void testExistingHeap() {
-		java.util.Queue<Long> q1 = new LinkedList<>();
+		// java.util.Queue<Long> q1 = new LinkedList<>();
 				
 		java.util.PriorityQueue<Long> q = new java.util.PriorityQueue<>();
 		

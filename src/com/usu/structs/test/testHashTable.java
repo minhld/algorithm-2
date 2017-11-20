@@ -26,7 +26,7 @@ public class testHashTable extends Thread {
 	public void testExistingTable() {
 		java.util.HashMap<String, String> hash = new java.util.HashMap<>();
 		hash.put("A", "ACF");
-		String a = hash.get("A");
+		hash.get("A");
 		System.out.println("ABCDEFGHIZKLMKL".hashCode());
 	}
 	

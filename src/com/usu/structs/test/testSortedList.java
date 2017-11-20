@@ -1,7 +1,6 @@
 package com.usu.structs.test;
 
 import com.usu.structs.Array;
-import com.usu.structs.DLinkedList;
 import com.usu.structs.Link;
 import com.usu.structs.SortedList;
 import com.usu.test.utils.Utils;
