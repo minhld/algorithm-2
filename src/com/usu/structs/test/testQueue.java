@@ -1,9 +1,9 @@
 package com.usu.structs.test;
 
 import com.usu.structs.Array;
-import com.usu.structs.LinkQueue;
-import com.usu.structs.PriorityQueue;
 import com.usu.structs.Queue;
+import com.usu.structs.PriorityQueue;
+import com.usu.structs.ArrayQueue;
 
 public class testQueue extends Thread {
 	public void run() {
@@ -17,14 +17,14 @@ public class testQueue extends Thread {
 		long[] a = createArray(100, 1000);
 		Array.print(a);
 		
-		LinkQueue<Long> pQueue = new LinkQueue<>();
+		Queue<Long> pQueue = new Queue<>();
 		for (int i = 0; i < a.length; i++) {
 			boolean f = pQueue.add(a[i]);
 			if (!f) {
 				System.out.println("item #" + i + " with value " + a[i] + " cannot be added");
 			}
 		}
-		LinkQueue.print(pQueue);
+		Queue.print(pQueue);
 	}
 	
 	public void testPriorityQueue() {
@@ -38,14 +38,14 @@ public class testQueue extends Thread {
 				System.out.println("item #" + i + " with value " + a[i] + " cannot be added");
 			}
 		}
-		Queue.print(pQueue);
+		ArrayQueue.print(pQueue);
 	}
 	
 	public void testAllQueue() {
 		long[] a = createArray(10, 1000);
 		Array.print(a);
 		
-		Queue<Long> queue = new Queue<>(Long.class, 18);
+		ArrayQueue<Long> queue = new ArrayQueue<>(Long.class, 18);
 		for (int i = 0; i < a.length; i++) {
 			boolean f = queue.add(a[i]);
 			if (!f) {
@@ -60,7 +60,7 @@ public class testQueue extends Thread {
 		System.out.println();
 		queue.add(100000l);
 		
-		Queue.print(queue);
+		ArrayQueue.print(queue);
 	}
 	
 	public void testExistQueue() {

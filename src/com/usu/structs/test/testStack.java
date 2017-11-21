@@ -1,8 +1,8 @@
 package com.usu.structs.test;
 
 import com.usu.structs.Array;
-import com.usu.structs.LinkStack;
 import com.usu.structs.Stack;
+import com.usu.structs.ArrayStack;
 
 public class testStack extends Thread {
 	public void run() {
@@ -15,24 +15,24 @@ public class testStack extends Thread {
 		long[] a = createArray(20, 1000);
 		Array.print(a);
 		
-		LinkStack<Long> stack = new LinkStack<>();
+		Stack<Long> stack = new Stack<>();
 		
 		for (int i = 0; i < a.length; i++) {
 			stack.push(a[i]);
 		}
-		LinkStack.print(stack);
+		Stack.print(stack);
 	}
 	
 	public void testAllStack() {
 		long[] a = createArray(20, 1000);
 		Array.print(a);
 		
-		Stack<Long> stack = new Stack<>(Long.class, a.length);
+		ArrayStack<Long> stack = new ArrayStack<>(Long.class, a.length);
 		
 		for (int i = 0; i < a.length; i++) {
 			stack.push(a[i]);
 		}
-		Stack.print(stack);
+		ArrayStack.print(stack);
 	}
 	
 	public void testExistStack() {

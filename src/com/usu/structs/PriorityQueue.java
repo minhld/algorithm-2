@@ -8,7 +8,7 @@ package com.usu.structs;
  * @author minhle
  *
  */
-public class PriorityQueue<T> extends Queue<T> {
+public class PriorityQueue<T> extends ArrayQueue<T> {
 
 	public PriorityQueue(Class<T> c, int max) {
 		super(c, max);

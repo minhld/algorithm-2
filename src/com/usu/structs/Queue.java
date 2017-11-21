@@ -1,7 +1,5 @@
 package com.usu.structs;
 
-import java.lang.reflect.Array;
-
 /**
  * provide functions:
  * 	- add, poll, peek, isEmpty, isFull, size
@@ -10,63 +8,34 @@ import java.lang.reflect.Array;
  *
  * @param <T>
  */
-@SuppressWarnings("unchecked")
 public class Queue<T> {
-	T[] array;
-	int maxLength = 0;
-	int front = -1;
-	int rear = 0;
+	DLinkedList<T> list;
 	
-	public Queue(Class<T> c, int max) {
-		maxLength = max + 2;
-		array = (T[]) Array.newInstance(c, maxLength);
+	public Queue() {
+		list = new DLinkedList<>();
 	}
 	
 	public boolean add(T val) {
-		// if the queue is full
-		if (isFull()) return false;
-		
-		// front will wrap around if it reaches
-		// the max index of the array
-		front = (front == maxLength - 1 ? 0 : front + 1);
-		array[front] = val;
+		list.addLast(val);
 		return true;
 	}
 	
 	public T poll() {
-		// if the queue is empty
-		if (isEmpty()) return null;
-		
-		// wrap around if the rear cursor reaches the max index
-		T ret = array[rear];
-		rear = (rear == maxLength - 1 ? 0 : rear + 1);
-		return ret;
+		Link<T> r = list.removeFirst();
+		return r != null ? r.data : null;
 	}
 	
 	public T peek() {
-		return array[rear];
-	}
-	
-	/**
-	 * since the positions of front & rear at full state
-	 * and empty state are the same, we make the array 2 
-	 * items more than the capacity of the queue
-	 * 
-	 * @return
-	 */
-	public boolean isFull() {
-		return (front + 2 == rear) ||
-			   (front + rear == maxLength - 2);		// wrap around
+		Link<T> p = list.peek();
+		return p != null ? p.data : null;
 	}
 	
 	public boolean isEmpty() {
-		return (front + 1 == rear) || 
-			   (front - rear == maxLength - 1);		// wrap around
+		return list.isEmpty();
 	}
 	
 	public int size() {
-		if (rear <= front) return front - rear + 1;
-		else return maxLength - (rear - front - 1);	// wrap around
+		return list.size();
 	}
 	
 	/**

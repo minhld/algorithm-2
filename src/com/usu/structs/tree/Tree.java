@@ -1,6 +1,6 @@
 package com.usu.structs.tree;
 
-import com.usu.structs.LinkQueue;
+import com.usu.structs.Queue;
 
 public class Tree<T> {
 	Node<T> root;
@@ -144,7 +144,7 @@ public class Tree<T> {
 	 * display tree ordered by line levels
 	 */
 	public void display() {
-		LinkQueue<Node<T>> q = new LinkQueue<>();
+		Queue<Node<T>> q = new Queue<>();
 		Node<T> c = root;
 		
 		if (c == null) return;

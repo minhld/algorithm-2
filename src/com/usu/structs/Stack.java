@@ -1,7 +1,5 @@
 package com.usu.structs;
 
-import java.lang.reflect.Array;
-
 /**
  * provide functions: 
  * 	- push, pop, peek, isEmpty, size
@@ -11,39 +9,33 @@ import java.lang.reflect.Array;
  * @param <T>
  */
 public class Stack<T> {
-	T[] array;
-	int top = -1;
+	LinkedList<T> list;
 	
-	@SuppressWarnings("unchecked")
-	public Stack(Class<T> c, int max) {
-		array = (T[]) Array.newInstance(c, max);
+	public Stack() {
+		list = new LinkedList<>();
 	}
 	
 	public T push(T val) {
-		// stack is full
-		if (top == array.length - 1) return null;
-		
-		// push into the stack
-		array[++top] = val;
+		list.addFirst(val);
 		return val;
 	}
 	
 	public T pop() {
-		// stack is empty
-		if (top == -1) return null;
-		return array[top--];
+		Link<T> r = list.removeFirst();
+		return r != null ? r.data : null;
 	}
 	
 	public T peek() {
-		return array[top];
+		Link<T> p = list.peek();
+		return p != null ? p.data : null;
 	}
 	
 	public boolean isEmpty() {
-		return top == -1;
+		return list.isEmpty();
 	}
 	
 	public int size() {
-		return top + 1;
+		return list.size();
 	}
 	
 	/**

@@ -1,8 +1,8 @@
 package com.usu.structs.graph;
 
 import com.usu.structs.HashMap;
-import com.usu.structs.LinkQueue;
-import com.usu.structs.LinkStack;
+import com.usu.structs.Queue;
+import com.usu.structs.Stack;
 
 /**
  * store edges in a square matrix
@@ -17,13 +17,13 @@ public class Graph {
 	int adjMat[][];
 	int nVerts;
 	
-	LinkStack<Integer> stack;
-	LinkQueue<Integer> queue;
+	Stack<Integer> stack;
+	Queue<Integer> queue;
 	
 	public Graph() {
 		vIndexMap = new HashMap<>();
-		stack = new LinkStack<>();
-		queue = new LinkQueue<>();
+		stack = new Stack<>();
+		queue = new Queue<>();
 		
 		// setup everything to zero
 		adjMat = new int[MAX_VERTS][MAX_VERTS];
