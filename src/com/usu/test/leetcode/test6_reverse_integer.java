@@ -1,6 +1,6 @@
 package com.usu.test.leetcode;
 
-import com.usu.structs.ArrayStack;
+import com.usu.structs.Stack;
 
 public class test6_reverse_integer {
 	/**
@@ -19,7 +19,7 @@ public class test6_reverse_integer {
             return 0;
         }
         
-        ArrayStack<Character> stack = new ArrayStack<>();
+        Stack<Character> stack = new Stack<>();
         if (x < 0) sx = sx.substring(1);
         
         for (int i = 0; i < sx.length(); i++) {
