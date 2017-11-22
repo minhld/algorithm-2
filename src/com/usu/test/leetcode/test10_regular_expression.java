@@ -8,8 +8,8 @@ package com.usu.test.leetcode;
  */
 public class test10_regular_expression extends Thread {
 	public void run() {
-		String s = "ca";
-		String p = "c.*a";
+		String s = "ab";
+		String p = ".*";
 		System.out.println("result: " + isMatch(s, p));
 	}
 	
@@ -18,8 +18,32 @@ public class test10_regular_expression extends Thread {
 	}
 	
 	public boolean isMatch(String s, String p) {
-		return false;
-	}
+        return isMatch(s, p, 0, 0);
+    }
+    
+    /**
+     * is - current index of s, ip - current index of p
+     */ 
+    public boolean isMatch(String s, String p, int is, int ip) {
+    	if (ip == p.length() && is < s.length()) {
+            return false;
+        } else if (is == s.length() - 1 && ip == p.length() - 1) {
+            return p.charAt(ip) == '.' ? true : s.charAt(is) == p.charAt(ip);
+        } else if (is < s.length() && ip < p.length() - 1 && s.charAt(is) == p.charAt(ip) && p.charAt(ip + 1) != '*') {
+            return isMatch(s, p, is + 1, ip + 1);
+        } else if (is < s.length() && ip < p.length() - 1 && s.charAt(is) != p.charAt(ip) && p.charAt(ip + 1) != '*') {
+            return p.charAt(ip) == '.' ? isMatch(s, p, is + 1, ip + 1) : false;
+        } else if (is < s.length() && ip < p.length() - 1 && s.charAt(is) != p.charAt(ip) && p.charAt(ip + 1) == '*') {
+            return p.charAt(ip) == '.' ? isMatch(s, p, is + 1, ip) || isMatch(s, p, is, ip + 2) : isMatch(s, p, is, ip + 2);
+        } else if (is < s.length() && ip < p.length() - 1 && s.charAt(is) == p.charAt(ip) && p.charAt(ip + 1) == '*') {
+            return isMatch(s, p, is, ip + 2) || isMatch(s, p, is + 1, ip);
+        } else if (s.length() == 0 || is == s.length()) {
+            if (ip < p.length() - 1 && p.charAt(ip + 1) == '*') {
+                return isMatch(s, p, is, ip + 2);
+            } else if (ip == p.length()) return true;
+        }
+        return false;
+    }
 	
 	public boolean isMatch2(String s, String p) {
 		int j = s.length() - 1;
