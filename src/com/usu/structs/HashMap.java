@@ -63,6 +63,21 @@ public class HashMap<A, B> {
 		return null;
 	}
 	
+	public boolean containsKey(A key) {
+		int hashedKey = hashCode(key);
+		LinkedList2<A, B> bList = list[hashedKey];
+
+		// find the key
+		if (bList != null) {
+			com.usu.structs.LinkedList2<A, B>.Link l = bList.find(key);
+			return l != null;
+		}
+		
+		// not found
+		return false;
+
+	}
+	 
 	/**
 	 * remove a key out of the hash-map
 	 * 
