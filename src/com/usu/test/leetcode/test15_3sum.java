@@ -2,7 +2,9 @@ package com.usu.test.leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.usu.structs.Array;
 import com.usu.structs.HashMap;
@@ -11,13 +13,49 @@ public class test15_3sum extends Thread {
 	public void run() {
 		
 		// int[] nums = new int[] { 1, 0, -1, 2, 1, -1, 2, 4};
-		// int[] nums = new int[] { -1,0,1,2,-1,-4 };
-		int[] nums = new int[] { 0, 0, 0, 0 };
-		threeSum(nums);
+		int[] nums = new int[] { -1,0,1,2,-1,-4 };
+		// int[] nums = new int[] { 0, 0, 0, 0 };
+		threeSum2(nums);
 	}
 	
 	public static void main(String args[]) {
 		new test15_3sum().start();
+	}
+	
+	public List<List<Integer>> threeSum2(int[] nums) {
+		if(nums == null || nums.length < 3) {
+            return new ArrayList<>();
+        } 
+            
+        List<List<Integer>> mList = new ArrayList<List<Integer>>();
+        Set<List<Integer>> list = new HashSet<>();
+        
+        // sort the array in increasing order - O(nlogn)
+        Arrays.sort(nums);
+        
+        List<Integer> subList;
+        for (int i = 0; i < nums.length - 2; i++) {
+            int j = i + 1;
+            int k = nums.length - 1;
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+                if (sum == 0) {
+                    subList = new ArrayList<>();
+                    subList.add(nums[i]);
+                    subList.add(nums[j]);
+                    subList.add(nums[k]);
+                    list.add(subList);
+                    j++;
+                } else if (sum > 0) {
+                    k--;
+                } else if (sum < 0) {
+                    j++;
+                }
+            }
+        }
+        
+        mList.addAll(list);
+        return mList;
 	}
 	
 	public List<List<Integer>> threeSum(int[] nums) {
