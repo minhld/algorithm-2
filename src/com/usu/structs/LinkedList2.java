@@ -86,6 +86,17 @@ public class LinkedList2<A, T> {
 		return count;
 	}
 	
+	@Override
+	public String toString() {
+		StringBuffer str = new StringBuffer();
+		Link c = first;
+		while (c != null) {
+			str.append(c.data + " ");
+			c = c.next;
+		}
+		return str.toString();
+	}
+	
 	class Link {
 		public A key;
 		public T data;
@@ -98,6 +109,11 @@ public class LinkedList2<A, T> {
 		
 		public void display() {
 			System.out.print(data + " ");
+		}
+		
+		@Override
+		public String toString() {
+			return data + " ";
 		}
 	}
 }

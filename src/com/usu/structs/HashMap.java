@@ -26,7 +26,8 @@ public class HashMap<A, B> {
 	}
 	
 	private int hashCode(A key) {
-		return key.hashCode() % capacity;
+		int hashedKey = key.hashCode() % capacity;
+		return hashedKey > 0 ? hashedKey : -1 * hashedKey;
 	}
 	
 	/**
