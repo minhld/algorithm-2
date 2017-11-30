@@ -2,8 +2,9 @@ package com.usu.test.dp;
 
 public class test5_longestPalin extends Thread {
 	public void run() {
-		String s = "forgeeksskeegfofgeeasdjhasdnbsbndhsrs";
+		// String s = "forgeeksskeegfofgeeasdjhasdnbsbndhsrs";
 		// String s = "sdnbsbndhsr";
+		String s = "babad";
 		longestPalindrome(s);
 		longestPalindrome2(s);
 	}
@@ -63,6 +64,9 @@ public class test5_longestPalin extends Thread {
 	public void longestPalindrome(String s) {
 		int z = 0;
 		int count = 0;
+		int max = 0;
+		String p = "", maxP = "";
+		
 		for (int i = 0; i < s.length(); i++) {
 	
 			// find the palindrome with two cores
@@ -73,7 +77,12 @@ public class test5_longestPalin extends Thread {
 				count++;
 			}
 			if (z >= 0 && z < i - 1) {
-				System.out.println("" + s.substring(z + 1, z + 1 + count * 2));
+				p = s.substring(z + 1, z + 1 + count * 2);
+				if (max < p.length()) {
+					max = p.length();
+					maxP = p;
+				}
+				System.out.println("res: " + p);
 				count = 0;
 			}
 			
@@ -85,7 +94,12 @@ public class test5_longestPalin extends Thread {
 				count++;
 			}
 			if (z >= 0 && z < i - 2) {
-				System.out.println("" + s.substring(z + 1, z + 2 + count * 2));
+				p = s.substring(z + 1, z + 2 + count * 2);
+				if (max < p.length()) {
+					max = p.length();
+					maxP = p;
+				}
+				System.out.println("res: " + p);
 				count = 0;
 			}
 		}
