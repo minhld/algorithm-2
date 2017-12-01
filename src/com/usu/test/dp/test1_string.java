@@ -27,7 +27,7 @@ public class test1_string extends Thread {
 				if (a.charAt(i - 1) == b.charAt(j - 1)) {
 					maxs[i][j] = 1 + maxs[i - 1][j - 1];
 				} else {
-					maxs[i][j] = maxs[i - 1][j - 1];// Math.max(maxs[i - 1][j], maxs[i][j - 1]);
+					maxs[i][j] = Math.max(maxs[i - 1][j], maxs[i][j - 1]);
 				}
 				max = maxs[i][j];
 			}
