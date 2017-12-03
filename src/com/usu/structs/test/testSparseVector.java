@@ -28,7 +28,7 @@ public class testSparseVector extends Thread {
 		while (aIdx < a.idxList.size()) {
 			if (a.idxList.get(aIdx) == b.idxList.get(bIdx)) {
 				idx = a.idxList.get(aIdx);
-				sum += a.data[idx] * b.data[idx];d
+				sum += a.data[idx] * b.data[idx];
 				aIdx++;
 				bIdx++;
 			} else if (a.idxList.get(aIdx) > b.idxList.get(bIdx)) {
