@@ -9,7 +9,7 @@ package com.usu.test.dp;
 public class test6_max_sum extends Thread {
 	public void run() {
 		// int[] a = new int[] { -2, -3, 4, -1, -2, -3, 5, -3 };
-		int[] a = new int[] { 2, 3, 9, -2, 1, 2 };
+		int[] a = new int[] { 2, 3, 9, -2, 1 };
 		System.out.println("result: " + max(a));
 		System.out.println("result: " + max2(a, 0));
 	}
