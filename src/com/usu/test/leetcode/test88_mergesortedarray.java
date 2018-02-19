@@ -1,8 +1,14 @@
 package com.usu.test.leetcode;
 
+import com.usu.structs.Array;
+
 public class test88_mergesortedarray extends Thread {
 	public void run() {
-		
+		int[] nums1 = new int[] { 1, 2, 5, 8, 0, 0, 0, 0 };
+		int[] nums2 = new int[] { 1, 3, 4 };
+		merge(nums1, 4, nums2, 3);
+
+		Array.print(nums1);
 	}
 	
 	public void merge(int[] nums1, int m, int[] nums2, int n) {
