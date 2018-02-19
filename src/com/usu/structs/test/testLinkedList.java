@@ -4,6 +4,7 @@ import com.usu.structs.Array;
 import com.usu.structs.DLinkedList;
 import com.usu.structs.Link;
 import com.usu.structs.LinkedList;
+import com.usu.structs.news.ListNode;
 import com.usu.test.utils.Utils;
 
 public class testLinkedList extends Thread {
@@ -11,7 +12,8 @@ public class testLinkedList extends Thread {
 //		testExistQueue();
 //		testLinkedList1();
 //		testLinkedList2();
-		testDLinkedList1();
+		testLinkedList3();
+//		testDLinkedList1();
 		
 //		long[] a1 = new long[] { 1, 2, 3 };
 //		long[] a2 = new long[] { 5, 6, 7 };
@@ -42,6 +44,26 @@ public class testLinkedList extends Thread {
 		long key = Utils.openInput();
 		Link<Long> f = llist.find(key);
 		Link<Long> d = llist.delete(key);
+		
+		System.out.println(f != null ? "find value: " + f.data : "not found");
+		System.out.println(d != null ? "deleted: " + d.data : "not found");
+		
+		llist.display();
+	}
+	
+	public void testLinkedList3() {
+		long[] a = Utils.createArray(10, 100);
+		Array.print(a);
+		
+		com.usu.structs.news.LinkedList<Long> llist = new com.usu.structs.news.LinkedList<Long>();
+		for (int i = 0; i < a.length; i++) {
+			llist.addFirst(a[i]);
+		}
+		llist.display();
+		
+		long key = Utils.openInput();
+		ListNode<Long> f = llist.find(key);
+		ListNode<Long> d = llist.delete(key);
 		
 		System.out.println(f != null ? "find value: " + f.data : "not found");
 		System.out.println(d != null ? "deleted: " + d.data : "not found");
