@@ -2,18 +2,42 @@ package com.usu.structs.news;
 
 public class LinkedList<T> {
 	ListNode<T> head;
+	ListNode<T> end;
+	
+	public void add(T val) {
+		addLast(val);
+	}
+	
+	public ListNode<T> poll() {
+		return removeFirst();
+	}
 	
 	public ListNode<T> addFirst(T val) {
 		ListNode<T> node = new ListNode<>(val);
 		node.next = head;
+		if (head == null) end = node;
 		head = node;
 		return head;
+	}
+	
+	public ListNode<T> addLast(T val) {
+		ListNode<T> node = new ListNode<>(val);
+		if (end == null) {
+			end = node;
+			head = end;
+		} else {
+			end.next = node;
+			end = node;
+		}
+		return end;
 	}
 	
 	public ListNode<T> removeFirst() {
 		ListNode<T> first = head;
 		if (head != null) {
 			head = head.next;
+			
+			if (head == null) end = null; 
 		}
 		return first;
 	}

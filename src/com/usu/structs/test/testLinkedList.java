@@ -12,7 +12,8 @@ public class testLinkedList extends Thread {
 //		testExistQueue();
 //		testLinkedList1();
 //		testLinkedList2();
-		testLinkedList3();
+//		testLinkedList3();
+		testLinkedList5();
 //		testDLinkedList1();
 		
 //		long[] a1 = new long[] { 1, 2, 3 };
@@ -50,6 +51,32 @@ public class testLinkedList extends Thread {
 		
 		llist.display();
 	}
+	
+	public void testLinkedList5() {
+		long[] a = Utils.createArray(10, 100);
+		Array.print(a);
+		
+		com.usu.structs.news.LinkedList<Long> llist = new com.usu.structs.news.LinkedList<Long>();
+		for (int i = 0; i < a.length; i++) {
+			llist.add(a[i]);
+		}
+		llist.display();
+		
+//		while (llist.size() > 0) {
+//			System.out.println(llist.poll() + " ");
+//			llist.display();
+//		}
+		
+		long key = Utils.openInput();
+		ListNode<Long> f = llist.find(key);
+		ListNode<Long> d = llist.delete(key);
+		
+		System.out.println(f != null ? "find value: " + f.val : "not found");
+		System.out.println(d != null ? "deleted: " + d.val : "not found");
+		
+		llist.display();
+	}
+	
 	
 	public void testLinkedList3() {
 		long[] a = Utils.createArray(10, 100);
