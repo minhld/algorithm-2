@@ -3,8 +3,8 @@ package com.usu.structs.news;
 public class LinkedList<T> {
 	ListNode<T> head;
 	
-	public ListNode<T> addFirst(T data) {
-		ListNode<T> node = new ListNode<>(data);
+	public ListNode<T> addFirst(T val) {
+		ListNode<T> node = new ListNode<>(val);
 		node.next = head;
 		head = node;
 		return head;
@@ -24,7 +24,7 @@ public class LinkedList<T> {
 	
 	public ListNode<T> find(T key) {
 		ListNode<T> c = head;
-		while (c != null && !c.data.equals(key)) {
+		while (c != null && !c.val.equals(key)) {
 			c = c.next;
 		}
 		return c;
@@ -35,7 +35,7 @@ public class LinkedList<T> {
 		ListNode<T> c = head;
 		
 		while (c != null) {
-			if (c.data.equals(key)) {
+			if (c.val.equals(key)) {
 				if (p != null) {
 					p.next = c.next;
 				} else {
@@ -55,8 +55,10 @@ public class LinkedList<T> {
 		return head == null;
 	}
 	
-	public void display(ListNode<T> h) {
-		ListNode<T> c = h;
+	
+	@SuppressWarnings("rawtypes")
+	public static void display(ListNode h) {
+		ListNode c = h;
 		while (c != null) {
 			c.display();
 			c = c.next;

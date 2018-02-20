@@ -65,8 +65,8 @@ public class testLinkedList extends Thread {
 		ListNode<Long> f = llist.find(key);
 		ListNode<Long> d = llist.delete(key);
 		
-		System.out.println(f != null ? "find value: " + f.data : "not found");
-		System.out.println(d != null ? "deleted: " + d.data : "not found");
+		System.out.println(f != null ? "find value: " + f.val : "not found");
+		System.out.println(d != null ? "deleted: " + d.val : "not found");
 		
 		llist.display();
 	}

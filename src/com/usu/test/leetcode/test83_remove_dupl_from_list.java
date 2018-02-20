@@ -1,7 +1,6 @@
 package com.usu.test.leetcode;
 
 import com.usu.structs.HashMap;
-import com.usu.structs.LinkedList;
 
 public class test83_remove_dupl_from_list extends Thread {
 	public void run() {
@@ -10,8 +9,20 @@ public class test83_remove_dupl_from_list extends Thread {
 		head.next.next = new ListNode(1);
 		head.next.next.next = new ListNode(2);
 		
+		display(head);
+		
 		ListNode head1 = deleteDuplicates(head);
 		
+		display(head1);
+	}
+	
+	private void display(ListNode h) {
+		ListNode c = h;
+		while (c != null) {
+			System.out.print(c.val + " ");
+			c = c.next;
+		}
+		System.out.println();
 	}
 	
 	public class ListNode {
@@ -33,7 +44,9 @@ public class test83_remove_dupl_from_list extends Thread {
             if (!valueMap.containsKey(c.val)) {
                 valueMap.put(c.val, c.val);
             } else {
-                deleteNode(p, c);
+                // deleteNode(p, c);
+            	p.next = c.next;
+                c = p;
             }
             
             // go to the next node
@@ -44,10 +57,10 @@ public class test83_remove_dupl_from_list extends Thread {
         return head;
     }
     
-    private void deleteNode(ListNode p, ListNode c) {
-        p.next = c.next;
-        c = p;
-    }
+//    private void deleteNode(ListNode p, ListNode c) {
+//        p.next = c.next;
+//        c = p;
+//    }
 	
 	public static void main(String[] args) {
 		new test83_remove_dupl_from_list().start();

@@ -7,14 +7,14 @@ package com.usu.structs.news;
  *
  */
 public class ListNode<T> {
-	public T data;
+	public T val;
 	public ListNode<T> next;
 	
 	public ListNode(T data) {
-		this.data = data;
+		this.val = data;
 	}
 	
 	public void display() {
-		System.out.print(data + " ");
+		System.out.print(val + " ");
 	}
 }
