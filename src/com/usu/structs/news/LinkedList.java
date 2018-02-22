@@ -8,8 +8,9 @@ public class LinkedList<T> {
 		addLast(val);
 	}
 	
-	public ListNode<T> poll() {
-		return removeFirst();
+	public T poll() {
+		ListNode<T> node = removeFirst();
+		return node.val;
 	}
 	
 	public ListNode<T> addFirst(T val) {
