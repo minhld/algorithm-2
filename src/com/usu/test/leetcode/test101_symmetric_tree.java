@@ -15,41 +15,30 @@ public class test101_symmetric_tree extends Thread {
         
         if (root == null) return true;
         
-        // level - 0
         queue.add(root);
       
-        int itemsOfLastLevel = 1;           // number of items at the previous level
-        int itemsOfLevel = 0;               // number of items at the current level
+        int size = 1;
         String line = "";
         
-        int step = 0;
-        while (queue.size() > 0) {
-            TreeNode n = queue.poll();
-            step++;
+        while (true) {
+            size = queue.size();
+            if (size == 0) break;
             
-
-            line += (n != null ? n.val : "x") + " ";
-            if (step == itemsOfLastLevel) {
-                boolean lineOK = isStringSymmetric(line);
-                System.out.println(line + ": " + lineOK + ", " + itemsOfLevel + ", " + itemsOfLastLevel);
-                // if (!lineOK) return false;
-
-                // reset the counters
-                line = "";
-                itemsOfLastLevel = itemsOfLevel * 2;
-                itemsOfLevel = 0;
-                step = 0;
-            }
-
-            if (n == null) continue;
-
-            if (n.left != null || n.right != null) {
-                queue.add(n.left);
-                if (n.left != null) itemsOfLevel++;
+            while (--size >= 0) {
+                TreeNode c = queue.poll();
                 
-                queue.add(n.right);
-                if (n.right != null) itemsOfLevel++;
+                line += (c != null ? c.val : "x") + " ";
+                
+                if (c != null) {
+                    queue.add(c.left);
+                    queue.add(c.right);
+                }
             }
+            
+            boolean lineOK = isStringSymmetric(line);
+            System.out.println(line + ": " + lineOK);
+            line = "";
+            if (!lineOK) return false;
         }
         
         return true;
