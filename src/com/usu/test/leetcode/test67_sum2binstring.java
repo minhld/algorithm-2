@@ -1,3 +1,5 @@
+package com.usu.test.leetcode;
+
 public class test67_sum2binstring {
     public String addBinary(String a, String b) {
         StringBuilder bufStr = new StringBuilder();
