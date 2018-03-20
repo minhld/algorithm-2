@@ -1,4 +1,4 @@
-package com.usu.test.fb;
+package com.usu.test.ctci;
 
 /**
  * LeetCode 98:
