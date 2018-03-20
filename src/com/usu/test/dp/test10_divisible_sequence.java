@@ -16,7 +16,7 @@ public class test10_divisible_sequence extends Thread {
 	}
 
 	public boolean isPossible(int[] a, int m) {
-		
+		return false;
 	}
 	
 	public boolean isPossible3(int[] a, int m, int i, int sum) {

@@ -3,7 +3,7 @@ package com.usu.structs.tree;
 import com.usu.structs.Queue;
 
 public class Tree<T> {
-	Node<T> root;
+	public Node<T> root;
 	
 	public Node<T> find(int key) {
 		Node<T> c = root;
