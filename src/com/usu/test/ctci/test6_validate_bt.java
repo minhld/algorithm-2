@@ -11,6 +11,8 @@ public class test6_validate_bt extends Thread {
 		
 	}
 	
+	
+	
 	public static void run(String args[]) {
 		new test6_validate_bt().start();
 	}

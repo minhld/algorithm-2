@@ -7,9 +7,11 @@ public class test5_checkbalance extends Thread {
 	public void run() {
 		Tree<Integer> t = new Tree<>();
 		
-		buildTree1(t);
+		// buildTree1(t);
 		
 		// buildTree2(t);
+		
+		buildTree3(t);
 		
 		t.display();
 		
@@ -25,14 +27,14 @@ public class test5_checkbalance extends Thread {
 	boolean checkBalance(Node<Integer> n) {
 		if (n == null) return true;
 		
-		boolean heightDiff = getHeight(n.left) - getHeight(n.right) <= 1;
+		boolean heightDiff = Math.abs(getHeight(n.left) - getHeight(n.right)) <= 1;
 		
 		boolean isChildrenBalanced = checkBalance(n.left) && checkBalance(n.right); 
 		
 		return heightDiff && isChildrenBalanced;
 	}
 	
-	int getHeight(Node<Integer> n) {
+	private int getHeight(Node<Integer> n) {
 		if (n == null) return 0;
 		return Math.max(getHeight(n.left), getHeight(n.right)) + 1;
 	}
@@ -67,6 +69,11 @@ public class test5_checkbalance extends Thread {
 		t.insert(6, 6);
 		t.insert(11, 11);
 		t.insert(19, 19);
+	}
+	
+	void buildTree3(Tree<Integer> t) {
+		t.insert(1, 1);
+		t.insert(2, 2);
 	}
 	
 	public static void main(String args[]) {

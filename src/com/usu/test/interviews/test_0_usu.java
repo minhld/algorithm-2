@@ -1,4 +1,4 @@
-package com.usu.test.leetcode;
+package com.usu.test.interviews;
 
 public class test_0_usu extends Thread {
 	public void run() {
