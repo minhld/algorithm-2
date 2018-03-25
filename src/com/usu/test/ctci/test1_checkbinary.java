@@ -1,4 +1,4 @@
-package com.usu.test.fb;
+package com.usu.test.ctci;
 
 import java.util.ArrayList;
 import java.util.List;

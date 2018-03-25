@@ -7,7 +7,18 @@ import com.usu.test.utils.Utils;
 public class testHeap extends Thread {
 	public void run() {
 		// testExistingHeap();
-		testMyHeap();
+		// testMyHeap();
+		testMyHeap2();
+	}
+	
+	public void testMyHeap2() {
+		long[] a = Utils.createArray(105, 1000);
+		// PriorityQueue<Long> q = new PriorityQueue<>(Long.class, 100);
+		com.usu.structs.news.Heap<Long> h = new com.usu.structs.news.Heap<>(Long.class, com.usu.structs.news.Heap.HeapType.decrease, a.length);
+		for (int i = 0; i < a.length; i++) {
+			h.add(a[i]);
+		}
+		h.display();
 	}
 	
 	public void testMyHeap() {
