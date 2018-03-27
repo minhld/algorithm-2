@@ -8,7 +8,7 @@ public class testa_02 extends Thread {
 	public void run() {
 		List<String> logfile = new ArrayList<>();
 		logfile.add("a2 abc def");
-		logfile.add("a8 bbc def");
+		logfile.add("a8 abc       eef");
 		logfile.add("f6 abc def a1");
 		logfile.add("b1 12 3 5 7");
 		logfile.add("b1 3 5 3 5 7");
@@ -43,8 +43,8 @@ public class testa_02 extends Thread {
 		    } else {
 		        // if the line contains only words
     		    // get the key for comparing
-		        // key = concat(parts); 
-		        key = line.substring(parts[0].length()).trim();
+		        key = concat(parts); 
+		        // key = line.substring(parts[0].length()).trim();
 		        
 		        TreeMap<String, String> subMap;
 		        if (orderMap.containsKey(key)) {
@@ -82,8 +82,8 @@ public class testa_02 extends Thread {
     	for (int i = 1; i < words.length; i++) {
     		s += words[i];
     	}
-    	s += " " + words[0];
-    	return s;
+    	// s += " " + words[0];
+    	return s.trim();
     }
     
 	private boolean isNum(String word) {
