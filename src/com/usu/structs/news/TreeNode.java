@@ -10,6 +10,8 @@ public class TreeNode {
 	
 	@Override
 	public String toString() {
-		return "" + val;
+		return "val: " + val + ", " + 
+			   "left: " + (left != null ? left.val : "null") + ", " +
+			   "right: " + (right != null ? right.val : "null") + ", ";
 	}
 }

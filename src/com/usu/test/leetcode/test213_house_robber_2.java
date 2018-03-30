@@ -2,7 +2,7 @@ package com.usu.test.leetcode;
 
 public class test213_house_robber_2 extends Thread {
 	public void run() {
-		int[] a = new int[] {3,1,1,2,1,5,2,4};
+		int[] a = new int[] {5,3,1,1,4,3,1,2,5};
 		int maxVal = rob(a);
 		System.out.println("max val: " + maxVal);
 	}
@@ -26,7 +26,7 @@ public class test213_house_robber_2 extends Thread {
 
         for (int i = start + 2; i <= end; i++) {
         	int j = i - start;
-            dp[j] = Math.max(dp[j - 2] + nums[j], dp[j - 1]);
+            dp[j] = Math.max(dp[j - 2] + nums[i], dp[j - 1]);
         }
         
         return dp[dp.length - 1];
