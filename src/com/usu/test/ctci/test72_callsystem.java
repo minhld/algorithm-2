@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class test72 extends Thread {
+public class test72_callsystem extends Thread {
 	public void run() {
 		
 	}
 	
 	public static void main(String args[]) {
-		new test72().start();
+		new test72_callsystem().start();
 	}
 	
 	public enum Rank {
@@ -51,8 +51,20 @@ public class test72 extends Thread {
 	}
 	
 	class Call {
-		public void setHandler(Employee e) { }
+		Rank rank;
+		Caller caller;
 		
+		public Call(Caller c) {
+			rank = Rank.Respondent;
+			caller = c; 
+		}
+		
+		public void setHandler(Employee e) { }
+		public void reply(String message) { }
+		public void disconnect() { }
+	}
+	
+	class Caller {
 		
 	}
 	
