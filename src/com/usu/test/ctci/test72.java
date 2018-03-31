@@ -1,9 +1,8 @@
 package com.usu.test.ctci;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-
-import com.usu.test.ctci.test72.Employee.Role;
 
 public class test72 extends Thread {
 	public void run() {
@@ -14,69 +13,97 @@ public class test72 extends Thread {
 		new test72().start();
 	}
 	
+	public enum Rank {
+		Respondent,
+		Manager,
+		Director
+	}
+	
 	class CallCenter {
 		List<Employee> employees = new ArrayList<>();
+		LinkedList<Call> callQueues = new LinkedList<>();
 		
-		public CallCenter() {
-			
+		/**
+		 * assign a call to employee 
+		 * 
+		 * @param call
+		 */
+		public void dispatchCall(Call call) {
+			Employee emp = getFirstAvailableEmployee(Rank.Respondent);
+			if (emp != null) {
+				emp.receiveCall(call);
+			} else {
+				callQueues.add(call);
+			}
 		}
 		
-		public Employee dispatchCall() {
-			boolean foundRespondent = false;
-			for (Employee e : employees) {
-				if (e.isAvailable() && e.getRole() == Role.Respondent) {
-					return e;
-				} 
+		/**
+		 * find one available employee
+		 * 
+		 * @return
+		 */
+		Employee getFirstAvailableEmployee(Rank rank) {
+			for (Employee emp : employees) {
+				if (emp.isAvailable() && emp.getRank() == rank) return emp;
 			}
-
-			// no respondent found
-			for (Employee e : employees) {
-				if (e.isAvailable() && e.getRole() == Role.Manager) {
-					return e;
-				} 
-			}
-			
 			return null;
 		}
 	}
 	
-	static class Employee {
-		enum Role {
-			Respondent,
-			Manager,
-			Director
-		}
+	class Call {
+		public void setHandler(Employee e) { }
 		
-		protected Role role;
 		
-		public Role getRole() {
-			return role;
+	}
+	
+	abstract class Employee {
+		protected Rank rank;
+		
+		public Rank getRank() {
+			return rank;
 		}
 		
 		public boolean isAvailable() {
 			return true;
 		}
 		
-		public void escalate() {
+		public void receiveCall(Call call) {
 			
 		}
+		
+		public abstract void escalate(Call call);
 	}
 	
 	class Respondent extends Employee {
 		public Respondent() {
-			role = Role.Respondent;
+			rank = Rank.Respondent;
+		}
+		
+		@Override
+		public void escalate(Call call) {
+			
 		}
 	}
 
 	class Manager extends Employee {
 		public Manager() {
-			role = Role.Manager;
+			rank = Rank.Manager;
+		}
+		
+		@Override
+		public void escalate(Call call) {
+			
 		}
 	}
 
 	class Director extends Employee {
 		public Director() {
-			role = Role.Director;
+			rank = Rank.Director;
+		}
+		
+		@Override
+		public void escalate(Call call) {
+			
 		}
 	}
 }
