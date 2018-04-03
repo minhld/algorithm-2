@@ -1,17 +1,15 @@
 package com.usu.structs.news;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author Minh Le
  *
  * @param <A> keys
  * @param <B> values
  */
+@SuppressWarnings("unchecked")
 public class HashMap<A, B> {
 	public static final int MAX_CAPACITY = 100; 
-	List<LinkedListX<A, B>> array;
+	LinkedListX<A, B>[] array;
 	int capacity = 0;
 	
 	public HashMap() {
@@ -20,12 +18,12 @@ public class HashMap<A, B> {
 	
 	public HashMap(int cap) {
 		capacity = cap;
-		array = new ArrayList<>(cap);
+		array = new LinkedListX[cap];
 	}
 	
 	public void put(A key, B val) {
 		int listIndex = hashCode(key);
-		LinkedListX<A, B> list = array.get(listIndex);
+		LinkedListX<A, B> list = array[listIndex];
 		if (list == null) {
 			list = new LinkedListX<>();
 		} 
@@ -37,7 +35,7 @@ public class HashMap<A, B> {
 	
 	public B get(A key) {
 		int listIndex = hashCode(key);
-		LinkedListX<A, B> list = array.get(listIndex);
+		LinkedListX<A, B> list = array[listIndex];
 		if (list == null) return null;
 		
 		return list.find(key);
@@ -49,7 +47,7 @@ public class HashMap<A, B> {
 	
 	public B remove(A key) {
 		int listIndex = hashCode(key);
-		LinkedListX<A, B> list = array.get(listIndex);
+		LinkedListX<A, B> list = array[listIndex];
 		if (list == null) return null;
 		
 		return list.delete(key);

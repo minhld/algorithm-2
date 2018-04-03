@@ -2,6 +2,9 @@ package com.usu.structs.news;
 
 import java.util.Arrays;
 
+import com.usu.structs.Stack;
+import com.usu.structs.HashMap;
+
 /**
  * new implementation of Graph
  * 
@@ -30,7 +33,7 @@ public class Graph {
 	}
 	
 	public void addVertex(String label) {
-		vertexList[nVerts] = new Vertex(label);
+		vertexList[nVerts++] = new Vertex(label);
 		vIndexMap.put(label, nVerts);
 	}
 	
@@ -49,7 +52,35 @@ public class Graph {
 	 * perform Depth-First Search
 	 */
 	public void dfs() {
+		// start with the first item
+		vertexList[0].isVisited = true;
 		
+		Stack<Integer> stack = new Stack<>();
+		stack.push(0);
+		
+		while (!stack.isEmpty()) {
+			int c = stack.peek();
+
+			int adjIndex = -1;
+			for (int i = 0; i < vertexList.length; i++) {
+				if (adjMax[c][i] == 1 && !vertexList[i].isVisited) {
+					adjIndex = i;
+					break;
+				}
+			}
+			
+			if (adjIndex >= 0) {
+				vertexList[adjIndex].isVisited = true;
+				displayVertex(adjIndex);
+				stack.push(adjIndex);
+			} else {
+				stack.pop();
+				if (stack.size() == 1) {
+					System.out.println();
+					displayVertex(0);
+				}
+			}
+		}
 	}
 	
 	/**
