@@ -10,8 +10,13 @@ import java.util.List;
  * @param <B> values
  */
 public class HashMap<A, B> {
+	public static final int MAX_CAPACITY = 100; 
 	List<LinkedListX<A, B>> array;
 	int capacity = 0;
+	
+	public HashMap() {
+		this(MAX_CAPACITY);
+	}
 	
 	public HashMap(int cap) {
 		capacity = cap;
