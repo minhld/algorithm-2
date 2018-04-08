@@ -10,4 +10,5 @@ import com.usu.structs.news.HashMap;
  */
 public class test712_hashmap {
 
+	
 }

@@ -1,16 +1,46 @@
 package com.usu.test.dp;
 
+import java.util.Arrays;
+
 public class test3_longIncrease extends Thread {
 	public void run() {
 		// int[] a = new int[] { 5, 3, 7, 8, 1, 9, 2, 12, 11, 15, 21, 18 };
 		// int[] a = new int[] { 4,10,4,3,8,9 };
-		int[] a = new int[] { 1,3,6,7,9,4,10,5,6 };
-		int res = findLongestIncreaseSubArray(a);
+		int[] a = new int[] { 1,3,6,7,9,4,10,5,11 };
+		// int[] a = new int[] { 1, 4, 2, 5, 3, 4 };
+		int res = findLongestIncreaseSubArray3(a);
 		System.out.println("res: " + res);
+		
+//		findLongestIncreaseSubArray2(a);
+	}
+	
+	private int findLongestIncreaseSubArray3(int[] nums) {
+		if (nums.length <= 1) return nums.length;
+        
+		int[] maxs = new int[nums.length];
+		
+		Arrays.fill(maxs, 1);
+		
+		for (int i = 1; i < nums.length; i++) {
+			for (int j = 0; j < i; j++) {
+				if (nums[i] > nums[j] && maxs[i] < maxs[j] + 1) {
+					maxs[i] = maxs[j] + 1;
+				}
+			}
+		}
+		
+		int max = 0; 
+		for (int  i = 0; i < nums.length; i++) {
+			System.out.print(maxs[i] + "  ");
+            if (max < maxs[i])
+            	max = maxs[i];
+		}
+		
+		return maxs[nums.length - 1];
 	}
 	
 	private int findLongestIncreaseSubArray(int[] a) {
-if (a.length <= 1) return a.length;
+		if (a.length <= 1) return a.length;
         
         int[] maxs = new int[a.length];
 		maxs[0] = 1;
